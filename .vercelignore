@@ -1,0 +1,9 @@
+.env
+*.test.ts
+*.test.tsx
+__tests__/
+cypress/
+.vscode/
+*.log
+README_drafts/
+docs/
