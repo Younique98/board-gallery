@@ -1,0 +1,19 @@
+# Board Gallery
+
+> A creative asset board gallery with infinite scroll, optimized image
+> loading, and a component-driven UI, built with Next.js and TypeScript.
+
+Board Gallery demonstrates infinite-scroll pagination, responsive image
+optimization (blur placeholders, lazy loading, `sizes` tuning), and a
+modular component architecture. Data is served from a local mock fixture
+layer with seeded picsum.photos images, so the app runs standalone with
+no external API or credentials required.
+
+## Technical implementation
+
+- **Framework:** Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **Data fetching:** React Query with cursor-based pagination
+- **Images:** Next.js `<Image />` with responsive `sizes`, blur
+  placeholders, and lazy loading
+
+Source and full documentation: https://github.com/Younique98/board-gallery
