@@ -156,6 +156,7 @@ const ClipCard = ({ clip }: IClipCardProps) => {
                 <div className="relative aspect-video w-full bg-gray-200">
                     <div className="absolute top-2 right-2 z-10">
                         <DropdownMenu
+                            label={`${displayName || 'Asset'} options`}
                             onDownload={() => handleDownload(clip)}
                             onCopyLink={() => handleCopyLink(clip)}
                             onOpenModal={() => handleOpenAssetModal(clip)}
@@ -185,13 +186,27 @@ const ClipCard = ({ clip }: IClipCardProps) => {
             {clip.type === 'video' && (
                 <div
                     data-testid="clip-card-video-wrapper"
-                    className="relative aspect-video group overflow-hidden rounded-md group-hover:brightness-90 group-hover:scale-105 transition cursor-pointer"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${displayName || 'Video'} preview, press to play or pause`}
+                    className="relative aspect-video group overflow-hidden rounded-md group-hover:brightness-90 group-hover:scale-105 transition cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-400"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onClick={handleVideoClick}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            handleVideoClick()
+                        }
+                    }}
                 >
-                    <div className="absolute top-2 right-2 z-10">
+                    <div
+                        className="absolute top-2 right-2 z-10"
+                        onClick={(e) => e.stopPropagation()}
+                        onKeyDown={(e) => e.stopPropagation()}
+                    >
                         <DropdownMenu
+                            label={`${displayName || 'Asset'} options`}
                             onDownload={() => handleDownload(clip)}
                             onCopyLink={() => handleCopyLink(clip)}
                             onOpenModal={() => handleOpenAssetModal(clip)}

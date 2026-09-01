@@ -8,6 +8,7 @@ type TDropdownMenuProps = {
     onDownload?: () => void
     onCopyLink?: () => void
     onOpenModal?: () => void
+    label?: string
 }
 
 export const handleDownload = (clip: Clip) => {
@@ -52,10 +53,15 @@ export const DropdownMenu = ({
     onDownload,
     onCopyLink,
     onOpenModal,
+    label = 'Asset options',
 }: TDropdownMenuProps) => {
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <MenuButton className="p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300">
+            <MenuButton
+                aria-label={label}
+                title={label}
+                className="p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300"
+            >
                 <EllipsisVerticalIcon className="w-5 h-5 text-gray-500" />
             </MenuButton>
 
