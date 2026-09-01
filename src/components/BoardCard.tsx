@@ -37,7 +37,15 @@ export const BoardCard = ({
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
 
-            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent px-3 py-2">
+            {/*
+              Flat (non-gradient) overlay, not a fade: the caption sits on an
+              arbitrary, unpredictable photo, and a gradient's opacity varies
+              across the glyph band, so it can't guarantee AA contrast for
+              every letter against every possible backing image. A uniform
+              black/75 backdrop keeps white text at >=10:1 contrast even
+              against a pure-white worst-case photo.
+            */}
+            <div className="absolute bottom-0 left-0 w-full bg-black/75 px-3 py-2">
                 <p className="text-sm font-medium text-white truncate">
                     {title}
                 </p>

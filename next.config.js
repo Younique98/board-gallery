@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    swcMinify: true,
     productionBrowserSourceMaps: true,
+    // Don't auto-generate AGENTS.md/CLAUDE.md into the repo on every dev/build run.
+    agentRules: false,
     images: {
         remotePatterns: [
             {
